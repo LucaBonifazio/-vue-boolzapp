@@ -89,6 +89,9 @@ section{
 
 .msg_main{
     max-width:max-content;
+    border-radius: 20%;
+    padding: .3rem;
+    margin: .5rem;
 }
 
 .receive_msg{
