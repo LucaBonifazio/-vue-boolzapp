@@ -1,7 +1,7 @@
 /* generals */
 
 body{
-    background-color: grey;
+    background-color: rgb(193, 193, 193);
     height: 100vh;
 }
 
@@ -13,8 +13,12 @@ img{
     object-position: center;
 }
 
+i{
+    padding: .3rem;
+}
+
 .body_header{
-    background-color: green;
+    background-color: #075E54;
     height: 15%;
     width: 100%;
 }
@@ -39,20 +43,35 @@ footer{
 aside{
     width: 30%;
     height: 100%;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     border-right: 1px solid black;
 }
 
 .notifications{
-    background-color: aqua;
+    height: 50px;
+    background-color: #34b7f1;
 }
 
 .notifications_text{
+    height: 10%;
     font-size: .7rem;
 }
 
 .fa-bell-slash{
     font-size: 25px;
+}
+
+.users_container{
+    height: calc(100% - 110px);
+}
+
+.users_container .search_user:hover,
+ .user:hover{
+    background-color: #ece5dd;
+}
+
+.user_list{
+    height: 90%;
 }
 
 /* section */
@@ -62,14 +81,16 @@ section{
     background-image: url(https://preview.redd.it/qwd83nc4xxf41.jpg?auto=webp&s=172adf428061ec1b71c0d43b7ba870f85d46a816);
 }
 
-.user_profile{
-    background-color: gold;
+.user_profile,
+.user_chatbar,
+.send_msg{
+    background-color: #ece5dd;
 }
 
-.user_chatbar{
-    background-color: rgb(199, 120, 255);
+.msg_main{
+    max-width:max-content;
 }
 
-.users_container{
-    background-color: rgb(255, 133, 26);
+.receive_msg{
+    background-color: #dcf8c6;
 }
