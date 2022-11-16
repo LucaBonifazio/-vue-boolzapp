@@ -1,0 +1,75 @@
+/* generals */
+
+body{
+    background-color: grey;
+    height: 100vh;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.body_header{
+    background-color: green;
+    height: 15%;
+    width: 100%;
+}
+
+.content_container{
+    height: 95vh;
+}
+
+header{
+    height: 60px;
+}
+
+main{
+    height: calc(100% - 110px);
+}
+
+footer{
+    height: 50px;
+}
+/* aside */
+
+aside{
+    width: 30%;
+    height: 100%;
+    background-color: blue;
+    border-right: 1px solid black;
+}
+
+.notifications{
+    background-color: aqua;
+}
+
+.notifications_text{
+    font-size: .7rem;
+}
+
+.fa-bell-slash{
+    font-size: 25px;
+}
+
+/* section */
+
+section{
+    width: 70%;
+    background-image: url(https://preview.redd.it/qwd83nc4xxf41.jpg?auto=webp&s=172adf428061ec1b71c0d43b7ba870f85d46a816);
+}
+
+.user_profile{
+    background-color: gold;
+}
+
+.user_chatbar{
+    background-color: rgb(199, 120, 255);
+}
+
+.users_container{
+    background-color: rgb(255, 133, 26);
+}
