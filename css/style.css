@@ -15,6 +15,12 @@ img{
 
 i{
     padding: .3rem;
+    cursor: pointer;
+}
+
+i:hover{
+    color: #9cda6d;
+    transform: scale(1.1);
 }
 
 .body_header{
@@ -68,6 +74,8 @@ aside{
 .users_container .search_user:hover,
  .user:hover{
     background-color: #ece5dd;
+    color: #075E54;
+    cursor: pointer;
 }
 
 .user_list{
