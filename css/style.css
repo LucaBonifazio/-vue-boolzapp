@@ -116,8 +116,8 @@ section{
 
 .msg_main{
     max-width:max-content;
-    border-radius: 20%;
-    padding: .3rem;
+    border-radius: 5px;
+    padding: 1rem;
     margin: .5rem;
 }
 

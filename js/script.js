@@ -164,16 +164,27 @@ new Vue({
             ],
             }
             ],
-        currentChatName: 0,
         currentChat: 0,
+        searchName: '',
+        newMsg: '',
         currentDate: new Date(),
     },
     methods:{
-        selectChat(index) {
-            this.currentChatName = index;
-        },
-        selectChatMessage(index) {
+        selectChat(index){
             this.currentChat = index;
+        },
+        searchContact(){
+            // for (let index = 0; index < this.contacts.length; index++) {
+            //     if (this.searchName === this.contacts[index].name.slice(0, this.searchName.length)){
+            //         this.contacts[index].visible = true;
+            //     } else {
+            //         this.contacts[index].visible = false;
+            //     }
+                
+            // }
+        },
+        chatMessage(){
+           
         },
     },
 })
