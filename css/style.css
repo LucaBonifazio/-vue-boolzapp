@@ -1,7 +1,7 @@
 /* generals */
 
 body{
-    background-color: rgb(193, 193, 193);
+    background-image: url(https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg);
     height: 100vh;
 }
 
@@ -16,6 +16,7 @@ img{
 i{
     padding: .3rem;
     cursor: pointer;
+    color: #b7b7b6;
 }
 
 i:hover{
@@ -65,10 +66,16 @@ aside{
 
 .fa-bell-slash{
     font-size: 25px;
+    border-radius: 100%;
+    background-color:#ece5dd;
 }
 
 .users_container{
     height: calc(100% - 110px);
+}
+
+.user{
+    position: relative;
 }
 
 .users_container .search_user:hover,
@@ -80,6 +87,18 @@ aside{
 
 .user_list{
     height: 90%;
+}
+
+.user_last_message,
+.last_login{
+    font-size: .7rem;
+}
+
+.msg_date{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: .7rem;
 }
 
 /* section */
