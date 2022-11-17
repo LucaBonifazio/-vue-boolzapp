@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
-    <style>
-    [v-cloak] {display: none;}</style>
+    <style>[v-cloak] {display: none;}</style>
     <link rel="icon" type="image/x-icon" href="https://web.whatsapp.com/favicon-64x64.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -22,7 +21,7 @@
                 <header class="user_profile d-flex justify-content-between align-items-center p-2">
                     <div class="user d-flex justify-content-center align-items-center">
                         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="photo" class="img-fluid">
-                        <div class="user_name px-2">User</div>
+                        <div class="user_name px-2">Luca Bonifazio</div>
                     </div>
                     <div class="controls_aside">
                         <i class="fa-solid fa-circle-notch"></i>
@@ -58,7 +57,7 @@
                     <div class="user d-flex justify-content-center align-items-center">
                         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="photo" class="img-fluid">
                         <div class="user_text">
-                            <div class="user_name px-2">{{contacts[currentChat].name}}</div>
+                            <div class="user_name px-2">{{contacts[currentChatName].name}}</div>
                             <div class="last_login">Ultimo accesso alle ore: {{currentDate}}</div>
                         </div>
                     </div>
@@ -70,7 +69,7 @@
                 </header>
                 <main>
                     <div class="container d-flex flex-column p-5 overflow-auto h-100">
-                        <div class="msg_main send_msg d-flex align-self-start">Ciao</div>
+                        <div class="msg_main send_msg d-flex align-self-start" v-for="(message, i) in contacts.messages" :key="i">{{contacts[currentChat].message}}</div>
                         <div class="msg_main receive_msg d-flex align-self-end">Come va?</div>
                     </div>
                 </main>

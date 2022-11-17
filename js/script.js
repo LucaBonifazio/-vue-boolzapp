@@ -164,11 +164,15 @@ new Vue({
             ],
             }
             ],
+        currentChatName: 0,
         currentChat: 0,
         currentDate: new Date(),
     },
     methods:{
         selectChat(index) {
+            this.currentChatName = index;
+        },
+        selectChatMessage(index) {
             this.currentChat = index;
         },
     },
