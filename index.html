@@ -70,7 +70,7 @@
                     </div>
                 </header>
                 <main>
-                    <div class="container d-flex flex-column p-5 overflow-auto h-100">
+                    <div class="container d-flex flex-column p-1 overflow-auto h-100">
                         <div class="msg_main d-flex justify-content-end" v-for="(msg, i) in contacts[currentChat].messages" :key="i">
                             <div class="msg_main received_msg me-auto" v-if="msg.status === 'received'">{{msg.message}}
                                 <span class="time_received">{{msg.date}}</span>

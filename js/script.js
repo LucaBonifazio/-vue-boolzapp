@@ -190,6 +190,8 @@ new Vue({
                     message: this.newMsg,
                     status: 'sent',
                 })
+            } else {
+                return this.newMsg = '';
             }
             setTimeout(() =>{
                 this.contacts[this.currentChat].messages.push({
@@ -198,15 +200,14 @@ new Vue({
                     status: 'received',
                 });
             }, 1500);
-            return this.newMsg = '';
         },
         showMenu(event) {
             if (!event.target.matches('.fa-chevron-down')) {
                 let myDropdown = document.getElementById("myDropdown");
                   if (myDropdown.classList.contains('visible')) {
                     myDropdown.classList.remove('visible');
-                  }
                 }
+            }
         },         
         deleteMsg(index){
             this.contacts[this.currentChat].messages.splice(index, 1)
