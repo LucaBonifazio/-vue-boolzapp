@@ -190,15 +190,26 @@ new Vue({
                     message: this.newMsg,
                     status: 'sent',
                 })
-            }   
-            return this.newMsg = '';  
-            // setTimeout(() =>{
-            //         this.contacts[this.currentChat].messages.push({
-            //             date: this.currentDate,
-            //             message: 'Ok',
-            //             status: 'received',
-            //     });    
-            // }, 1500);
+            }
+            setTimeout(() =>{
+                this.contacts[this.currentChat].messages.push({
+                    date: this.currentDate,
+                    message: 'Ok, perfetto!',
+                    status: 'received',
+                });
+            }, 1500);
+            return this.newMsg = '';
+        },
+        showMenu(event) {
+            if (!event.target.matches('.fa-chevron-down')) {
+                let myDropdown = document.getElementById("myDropdown");
+                  if (myDropdown.classList.contains('visible')) {
+                    myDropdown.classList.remove('visible');
+                  }
+                }
+        },         
+        deleteMsg(index){
+            this.contacts[this.currentChat].messages.splice(index, 1)
         },
     },
 })

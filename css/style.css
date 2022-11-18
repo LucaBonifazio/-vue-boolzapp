@@ -128,20 +128,22 @@ section{
     position: relative;
 }
 
-.message_menu {
+.dropdown_menu {
 	display: none;
 	position: absolute;
-	right: 0;
+    top: 20px;
+	right: 10px;
 	list-style: none;
 	background-color:#f4f4f4;
 	box-shadow: 0 0 5px #888888;
 }
 
-.message_menu li {
-	padding: .5rem;
+.dropdown_menu li {
+	padding: .8rem;
+    font-size: .7rem;
 }
 
-.message_menu li:hover {
+.dropdown_menu li:hover {
 	cursor: pointer;
 	background-color: #EAEAEA;
 }
