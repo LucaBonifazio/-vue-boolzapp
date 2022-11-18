@@ -4,7 +4,7 @@ new Vue({
         contacts: [
             {
             name: 'Michele',
-            avatar: '_1',
+            avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
             visible: true,
             messages: [
             {
@@ -26,7 +26,7 @@ new Vue({
             },
             {
             name: 'Fabio',
-            avatar: '_2',
+            avatar: 'https://randomuser.me/api/portraits/lego/2.jpg',
             visible: true,
             messages: [
             {
@@ -48,7 +48,7 @@ new Vue({
             },
             {
             name: 'Samuele',
-            avatar: '_3',
+            avatar: 'https://randomuser.me/api/portraits/lego/3.jpg',
             visible: true,
             messages: [
             {
@@ -70,7 +70,7 @@ new Vue({
             },
             {
             name: 'Alessandro B.',
-            avatar: '_4',
+            avatar: 'https://randomuser.me/api/portraits/lego/4.jpg',
             visible: true,
             messages: [
             {
@@ -87,7 +87,7 @@ new Vue({
             },
             {
             name: 'Alessandro L.',
-            avatar: '_5',
+            avatar: 'https://randomuser.me/api/portraits/lego/5.jpg',
             visible: true,
             messages: [
             {
@@ -104,7 +104,7 @@ new Vue({
             },
             {
             name: 'Claudia',
-            avatar: '_6',
+            avatar: 'https://randomuser.me/api/portraits/lego/6.jpg',
             visible: true,
             messages: [
             {
@@ -126,7 +126,7 @@ new Vue({
             },
             {
             name: 'Federico',
-            avatar: '_7',
+            avatar: 'https://randomuser.me/api/portraits/lego/7.jpg',
             visible: true,
             messages: [
             {
@@ -143,7 +143,7 @@ new Vue({
             },
             {
             name: 'Davide',
-            avatar: '_8',
+            avatar: 'https://randomuser.me/api/portraits/lego/8.jpg',
             visible: true,
             messages: [
             {
@@ -167,24 +167,38 @@ new Vue({
         currentChat: 0,
         searchName: '',
         newMsg: '',
-        currentDate: new Date(),
+        currentDate: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
     },
     methods:{
         selectChat(index){
             this.currentChat = index;
         },
         searchContact(){
-            // for (let index = 0; index < this.contacts.length; index++) {
-            //     if (this.searchName === this.contacts[index].name.slice(0, this.searchName.length)){
-            //         this.contacts[index].visible = true;
-            //     } else {
-            //         this.contacts[index].visible = false;
-            //     }
-                
-            // }
+            for(let i=0; i < this.contacts.length; i++){
+                if (this.contacts[i].name.toLowerCase().includes(this.searchName.toLowerCase())) {
+                    this.contacts[i].visible = true;
+                }
+                else {
+                    this.contacts[i].visible = false;
+                }
+            }
         },
         chatMessage(){
-           
+            if (this.newMsg !== '') {
+                this.contacts[this.currentChat].messages.push({
+                    date: this.currentDate,
+                    message: this.newMsg,
+                    status: 'sent',
+                })
+            }   
+            return this.newMsg = '';  
+            // setTimeout(() =>{
+            //         this.contacts[this.currentChat].messages.push({
+            //             date: this.currentDate,
+            //             message: 'Ok',
+            //             status: 'received',
+            //     });    
+            // }, 1500);
         },
     },
 })

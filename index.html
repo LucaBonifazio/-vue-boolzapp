@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js" defer></script>
     <style>[v-cloak] {display: none;}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" type="image/x-icon" href="https://web.whatsapp.com/favicon-64x64.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -20,8 +22,8 @@
             <aside>
                 <header class="user_profile d-flex justify-content-between align-items-center p-2">
                     <div class="user d-flex justify-content-center align-items-center">
-                        <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="photo" class="img-fluid">
-                        <div class="user_name px-2">user</div>
+                        <img src="https://wallpaperaccess.com/full/1395085.jpg" alt="photo" class="img-fluid">
+                        <div class="user_name px-2">HacK1NG</div>
                     </div>
                     <div class="controls_aside">
                         <i class="fa-solid fa-circle-notch"></i>
@@ -38,11 +40,11 @@
                 </div>
                 <div class="users_container">
                     <div class="search_user d-flex p-2">
-                        <input class="form-control mx-1" type="text" placeholder="&#x1F50E; Search user..." v-model="searchName" @keyup.enter="searchContact">
+                        <input class="form-control mx-1" type="text" placeholder="&#x1F50E; Cerca contatto..." v-model="searchName" @keyup.enter="searchContact()">
                     </div>
                     <div class="user_list d-flex flex-column align-items-center overflow-auto">
-                        <div class="user d-flex align-items-center  w-100 mt-3 p-1" v-for="(contact, i) in contacts" :key="i" @click="selectChat(i)">
-                            <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="photo" class="img-fluid">
+                        <div class="user d-flex align-items-center  w-100 mt-3 p-1" :class="contact.visible ? 'visible' : 'hidden'" v-for="(contact, i) in contacts" :key="i" @click="selectChat(i)">
+                            <img :src="contact.avatar" alt="photo" class="img-fluid">
                             <div class="user_text">
                                 <div class="user_name px-2">{{contact.name}}</div>
                                 <div class="user_last_message p-1">{{contact.messages[contact.messages.length -1].message}}</div>
@@ -55,10 +57,10 @@
             <section>
                 <header class="user_profile d-flex justify-content-between align-items-center p-2">
                     <div class="user d-flex justify-content-center align-items-center">
-                        <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="photo" class="img-fluid">
+                        <img :src="contacts[currentChat].avatar" alt="photo" class="img-fluid">
                         <div class="user_text">
                             <div class="user_name px-2">{{contacts[currentChat].name}}</div>
-                            <div class="last_login">Ultimo accesso alle ore: {{currentDate}}</div>
+                            <div class="last_login">Ultimo accesso: {{currentDate}}</div>
                         </div>
                     </div>
                     <div class="controls_section">
@@ -69,13 +71,29 @@
                 </header>
                 <main>
                     <div class="container d-flex flex-column p-5 overflow-auto h-100">
-                        <div class="msg_main send_msg d-flex align-self-start" v-for="(msg, i) in contacts[currentChat].messages" :key="i">{{msg.message}}</div>
-                        <div class="msg_main receive_msg d-flex align-self-end">Come va?</div>
+                        <div class="msg_main d-flex justify-content-end" v-for="(msg, i) in contacts[currentChat].messages" :key="i">
+                            <div class="msg_main received_msg me-auto" v-if="msg.status === 'received'">{{msg.message}}
+                                <i class="fa-solid fa-chevron-down" @click="showMenu()"></i>
+                                <span class="time_received">{{msg.date}}</span>
+                                <ul class="message_menu">
+                                    <li>Info messaggio</li>
+                                    <li>Elimina messaggio</li>
+                                </ul>
+                            </div>
+                            <div class="msg_main send_msg" v-else="">{{msg.message}}
+                                <i class="fa-solid fa-chevron-down" @click="showMenu()"></i>
+                                <span class="time_send">{{msg.date}}</span>
+                                <ul class="message_menu">
+                                    <li>Info messaggio</li>
+                                    <li>Elimina messaggio</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </main>
                 <footer class="user_chatbar d-flex justify-content-between align-items-center p-2">
                         <i class="fa-regular fa-face-smile"></i>
-                        <input class="form-control mx-2" type="text" placeholder="Readonly input here..." v-for="" v-model="newMsg" @keyup.enter="chatMessage()">
+                        <input class="form-control mx-2" type="text" placeholder="Scrivi un messaggio..." v-model="newMsg" @keyup.enter="chatMessage()">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
                 </footer>
