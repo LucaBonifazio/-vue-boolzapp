@@ -74,16 +74,16 @@
                         <div class="msg_main d-flex justify-content-end" v-for="(msg, i) in contacts[currentChat].messages" :key="i">
                             <div class="msg_main received_msg me-auto" v-if="msg.status === 'received'">{{msg.message}}
                                 <span class="time_received">{{msg.date}}</span>
-                                <i class="fa-solid fa-chevron-down" onclick="showMenu(e)"></i>
-                                <ul id="myDropdown" class="dropdown_menu list-group">
+                                <i class="fa-solid fa-chevron-down" @click="toggleMenu(msg)"></i>
+                                <ul class="dropdown_menu list-group" :class="{visible:msg.isDropdownVisible}">
                                     <li>Info messaggio</li>
                                     <li @click="deleteMsg(i)">Elimina messaggio</li>
                                 </ul>
                             </div>
                             <div class="msg_main send_msg" v-else="">{{msg.message}}
                                 <span class="time_send">{{msg.date}}</span>
-                                <i class="fa-solid fa-chevron-down" onclick="showMenu(e)"></i>
-                                <ul id="myDropdown" class="dropdown_menu list-group">
+                                <i class="fa-solid fa-chevron-down" @click="toggleMenu(msg)"></i>
+                                <ul class="dropdown_menu list-group" :class="{visible:msg.isDropdownVisible}">
                                     <li>Info messaggio</li>
                                     <li @click="deleteMsg(i)">Elimina messaggio</li>
                                 </ul>
