@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js" defer></script>
-    <style>[v-cloak] {display: none;}</style>
+    <style>
+    [v-cloak] {
+        display: none;
+    }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" type="image/x-icon" href="https://web.whatsapp.com/favicon-64x64.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,9 +51,9 @@
                             <img :src="contact.avatar" alt="photo" class="img-fluid">
                             <div class="user_text">
                                 <div class="user_name px-2">{{contact.name}}</div>
-                                <div class="user_last_message p-1">{{contact.messages[contact.messages.length -1].message}}</div>
+                                <div class="user_last_message p-1">{{contact.messages.length ?contact.messages[contact.messages.length -1].message : ''}}</div>
                             </div>
-                            <div class="msg_date">{{contact.messages[contact.messages.length -1].date}}</div>
+                            <div class="msg_date">{{contact.messages.length ? contact.messages[contact.messages.length -1].date : ''}}</div>
                         </div>
                     </div>
                 </div>

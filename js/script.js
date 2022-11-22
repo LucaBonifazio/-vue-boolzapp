@@ -191,9 +191,11 @@ new Vue({
         currentDate: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
     },
     methods:{
+
         selectChat(index){
             this.currentChat = index;
         },
+
         searchContact(){
             for(let i=0; i < this.contacts.length; i++){
                 if (this.contacts[i].name.toLowerCase().includes(this.searchName.toLowerCase())) {
@@ -204,6 +206,7 @@ new Vue({
                 }
             }
         },
+
         chatMessage(){
             if (this.newMsg !== '') {
                 this.contacts[this.currentChat].messages.push({
@@ -221,14 +224,17 @@ new Vue({
                     status: 'received',
                 });
             }, 1500);
+            return this.newMsg = '';
         },
+
         toggleMenu(msg) {   
             if (msg.isDropdownVisible === true) {
                 msg.isDropdownVisible = false;
             } else {
                 msg.isDropdownVisible = true;
             }
-        },         
+        },
+
         deleteMsg(index){
             this.contacts[this.currentChat].messages.splice(index, 1)
         },
